@@ -3,4 +3,4 @@ fibonacci-spirals
 
 Fibonacci spirals in HTML5
 
-![Fibonacci spirals in HTML5](https://github.com/hbokmann/fibonacci-spirals/blob/master/fibonacci.PNG)
+![Fibonacci spirals in HTML5](https://raw.github.com/hbokmann/fibonacci-spirals/master/fibonacci.PNG)
