@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<script type="text/javascript">
+function spiral() {	    
+	        
+	        var c = document.getElementById('c');
+var context = c.getContext("2d");
+var centerx = context.canvas.width / 2;
+var centery = context.canvas.height / 2;
+	
+    
+
+    context.clearRect(0, 0, 400, 400);
+
+  var gradient_vertical = context.createLinearGradient(0,0,0,400);
+  
+	gradient_vertical.addColorStop(0,'red');  
+    gradient_vertical.addColorStop(1,'blue');
+    context.fillStyle=gradient_vertical;
+
+    context.moveTo(centerx, centery);
+    context.beginPath();
+    // for (i = 0; i < 720; i++) {
+    //     angle = 0.2 * i;
+    //     x = centerx + (a * angle) * Math.cos(angle);
+    //     y = centery + (a * angle) * Math.sin(angle);
+    //     context.arc(x, y,5,0,2*Math.PI,false);
+    //     // context.fillStyle = "red";
+    //     // document.write(x+'<br>'+y+'<br/>');
+    // }
+
+
+var i=1;
+var f=300;
+
+  function s() {
+    	if(i<f) {
+	    	d = 0.3*i;
+	    	e = 0.2*i;
+    		x = centerx + d * Math.cos(e);
+	        y = centery + d * Math.sin(e);
+	        context.arc(x, y,5,0,2*Math.PI,false);	
+	        i++;
+	        context.fill();	
+	    }
+	    else if(i==f) {
+	        context.beginPath();
+	        i++;//601
+	    } else if(f>0) {
+        	d = 0.3*f;
+	    	e = 0.2*f;
+    		x = centerx + d * Math.cos(e);
+	        y = centery + d * Math.sin(e);
+	        context.arc(x, y,6,0,2*Math.PI,false);	
+	        f--;//0
+	        context.fillStyle = "white";
+	        context.fill();	
+        } else {//
+        	clearInterval(interval);
+        }
+   }
+
+s = Math.sqrt(f);
+
+   function draw() {
+    	if(i<f) {
+    		r = Math.sqrt(i);
+	    	// d = r*(r/s)*10;
+	    	// e = 0.2*i;
+	    	t = 137.5*Math.PI/180*i;
+	    	console.log(t);
+    		x = centerx + r*10 * Math.cos(t);
+	        y = centery + r*10 * Math.sin(t);
+	        context.arc(x, y,5,0,2*Math.PI,false);	
+	        i++;
+	        context.fill();	
+	    } else {
+        	clearInterval(interval);
+        }
+   }
+
+    var interval = window.setInterval(draw, 1);
+    
+}
+window.onload = spiral;
+	    </script>
+	</head>
+	<body>
+		<canvas id="c" width="400" height="400"></canvas>
+	</body>
+	</html>
+	<!-- http://jsfiddle.net/jingshaochen/xJc7M/ -->
+	<!-- http://stackoverflow.com/questions/6824391/how-to-draw-a-spiral-in-canvas -->
